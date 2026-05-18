@@ -12,26 +12,37 @@
 
     <div id="tsparticles"></div>
 
-    <div class="custom-cursor" id="custom-cursor"></div>
+    <div class="custom-cursor hide-on-mobile" id="custom-cursor"></div>
 
-    <nav class="sidebar">
+    <nav class="sidebar" id="sidebar">
         <div class="logo"><span>Y</span>TEAM</div>
         <div class="menu-group">
-            <a href="#" class="nav-item active interactive" data-target="page-beranda">Beranda</a>
-            <a href="#" class="nav-item interactive" data-target="page-mpl">MPL Indonesia</a>
-            <a href="#" class="nav-item interactive">Tentang Kami</a>
-            <a href="#" class="nav-item interactive">Turnamen</a>
-            <a href="#" class="nav-item interactive">Komunitas</a>
+            <a href="#" class="nav-item active interactive" data-target="page-beranda">🏠 BERANDA</a>
+            <p class="nav-label">KATEGORI</p>
+            <a href="#" class="nav-item interactive" data-target="page-mpl">🏆 MPL INDONESIA</a>
+            <a href="#" class="nav-item interactive" data-target="page-mdl">🎖️ MDL INDONESIA</a>
+            <a href="#" class="nav-item interactive" data-target="page-turnamen">⚔️ TURNAMEN</a>
+            <a href="#" class="nav-item interactive" data-target="page-komunitas">👥 KOMUNITAS</a>
+            <a href="#" class="nav-item interactive" data-target="page-ranking">📈 RANKING</a>
+            <a href="#" class="nav-item interactive" data-target="page-berita">📰 BERITA</a>
+            <a href="#" class="nav-item interactive" data-target="page-guide">📖 GUIDE</a>
+            <a href="#" class="nav-item interactive" data-target="page-store">🛒 STORE</a>
         </div>
     </nav>
 
     <main class="main-content">
         <header class="topbar">
-            <div class="topbar-nav">
-                <a href="#" class="active interactive">BERANDA</a>
-                <a href="#" class="interactive">TENTANG KAMI</a>
-                <a href="#" class="interactive">TURNAMEN</a>
+            <div class="mobile-toggle interactive" id="mobile-toggle">☰</div>
+            
+            <div class="topbar-nav hide-on-mobile">
+                <a href="#" class="active interactive" data-target="page-beranda">BERANDA</a>
+                <a href="#" class="interactive" data-target="page-komunitas">TENTANG KAMI</a>
+                <a href="#" class="interactive" data-target="page-turnamen">TURNAMEN</a>
+                <a href="#" class="interactive" data-target="page-berita">BERITA</a>
+                <a href="#" class="interactive" data-target="page-guide">GUIDE</a>
+                <a href="#" class="interactive" data-target="page-store">STORE</a>
             </div>
+            
             <div class="auth-buttons">
                 <button class="btn-login interactive">MASUK</button>
                 <button class="btn-register interactive">DAFTAR</button>
@@ -47,7 +58,7 @@
             </div>
 
             <div class="dashboard-grid">
-                <div class="glass-card">
+                <div class="glass-card interactive-card">
                     <div class="card-header">
                         <h3>TURNAMEN TERDEKAT</h3>
                         <a href="#" class="interactive">LIHAT SEMUA</a>
@@ -55,30 +66,30 @@
                     <div class="card-body tournament-card">
                         <div class="trophy-placeholder">🏆</div>
                         <div class="tourney-info">
-                            <h4>YTEAM CHAMPIONSHIP SEASON 3</h4>
+                            <h4>YTEAM CHAMPIONSHIP S3</h4>
                             <p class="prize">Rp 25.000.000</p>
                             <span class="date">20 - 27 JULI 2024</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass-card">
+                <div class="glass-card interactive-card">
                     <div class="card-header">
                         <h3>BERITA TERBARU</h3>
                         <a href="#" class="interactive">LIHAT SEMUA</a>
                     </div>
                     <div class="card-body">
-                        <p class="text-muted">Loading berita...</p>
+                        <p class="text-muted">Update Patch Terbaru Mobile Legends, penyesuaian hero dan item...</p>
                     </div>
                 </div>
 
-                <div class="glass-card">
+                <div class="glass-card interactive-card">
                     <div class="card-header">
                         <h3>GUILD UNGGULAN</h3>
                         <a href="#" class="interactive">LIHAT SEMUA</a>
                     </div>
                     <div class="card-body">
-                        <p class="text-muted">Loading guild...</p>
+                        <p class="text-muted">🌟 Exorcist ID (Win Rate 78%)</p>
                     </div>
                 </div>
             </div>
@@ -90,23 +101,179 @@
                 <h1 class="hero-title">DARI KOMUNITAS,<br>MENJADI<br><span>JUARA DUNIA.</span></h1>
                 <p class="hero-desc">YTeam Community adalah tempat para player MLBB berkumpul, berkembang, dan berkompetisi untuk menciptakan tim esports yang mampu menaklukkan dunia.</p>
             </div>
-
             <div class="dashboard-grid" style="grid-template-columns: 2fr 1fr;">
                 <div class="glass-card">
-                    <div class="card-header">
-                        <h3>LEADERBOARD KOMUNITAS</h3>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-muted">Tabel klasemen akan dirender menggunakan JavaScript dari API.</p>
-                    </div>
+                    <div class="card-header"><h3>LEADERBOARD KOMUNITAS</h3></div>
+                    <div class="card-body"><p class="text-muted">Cek menu RANKING untuk melihat klasemen lengkap.</p></div>
                 </div>
                 <div class="glass-card">
-                    <div class="card-header">
-                        <h3>JALUR MENUJU PUNCAK</h3>
-                    </div>
+                    <div class="card-header"><h3>PRESTASI YTEAM</h3></div>
+                    <div class="card-body"><p class="text-muted">🏆 Juara 1 YTeam S3</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-mdl" class="page-section">
+            <div class="hero">
+                <p class="subtitle">LIGA DUA</p>
+                <h1 class="hero-title">MDL <span>INDONESIA.</span></h1>
+                <p class="hero-desc">Tempat lahirnya para bintang baru. Pantau terus perkembangan tim akademi YTEAM di sini.</p>
+            </div>
+            <div class="dashboard-grid">
+                <div class="glass-card">
+                    <div class="card-header"><h3>JADWAL MATCH SELANJUTNYA</h3></div>
                     <div class="card-body">
-                        <p class="text-muted">Bagan turnamen.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #333;">
+                            <strong>YTEAM Academy</strong> <span style="color: var(--primary-red);">VS</span> <strong>EVOS Icon</strong>
+                        </div>
+                        <p class="text-muted" style="margin-top: 10px; font-size: 12px;">Besok, 15:00 WIB - BO3</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-turnamen" class="page-section">
+            <div class="hero">
+                <p class="subtitle">JADWAL & BAGAN</p>
+                <h1 class="hero-title">DAFTAR <span>TURNAMEN.</span></h1>
+            </div>
+            <div class="dashboard-grid">
+                <div class="glass-card interactive-card">
+                    <div class="card-body tournament-card" style="display:flex; align-items:center; gap:20px;">
+                        <div class="trophy-placeholder" style="font-size: 40px;">🥇</div>
+                        <div class="tourney-info">
+                            <h4>YTEAM COMMUNITY CUP</h4>
+                            <p class="prize" style="color: var(--gold); font-weight:bold; font-size:18px;">Rp 10.000.000</p>
+                            <span class="date" style="color: var(--text-muted); font-size:12px;">Pendaftaran Dibuka!</span>
+                        </div>
+                    </div>
+                    <button class="btn-secondary interactive" style="width: 100%; margin-top: 20px;">DAFTAR SEKARANG</button>
+                </div>
+                <div class="glass-card interactive-card">
+                    <div class="card-body tournament-card" style="display:flex; align-items:center; gap:20px;">
+                        <div class="trophy-placeholder" style="font-size: 40px;">🥈</div>
+                        <div class="tourney-info">
+                            <h4>LIGA MAHASISWA NASIONAL</h4>
+                            <p class="prize" style="color: var(--gold); font-weight:bold; font-size:18px;">Rp 50.000.000</p>
+                            <span class="date" style="color: var(--text-muted); font-size:12px;">Sedang Berlangsung</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary interactive" style="width: 100%; margin-top: 20px;">LIHAT BAGAN</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-komunitas" class="page-section">
+            <div class="hero">
+                <p class="subtitle">TENTANG KAMI</p>
+                <h1 class="hero-title">FORUM <span>KOMUNITAS.</span></h1>
+            </div>
+            <div class="dashboard-grid">
+                <div class="glass-card">
+                    <h3>Gabung Discord YTEAM</h3>
+                    <p class="text-muted" style="margin: 15px 0;">Cari teman mabar, bahas META terbaru, dan ikut event harian.</p>
+                    <button class="btn-primary interactive" style="background: #5865F2;">JOIN DISCORD</button>
+                </div>
+                <div class="glass-card">
+                    <h3>Syarat Masuk Guild In-Game</h3>
+                    <ul class="text-muted" style="margin: 15px 0 15px 20px; line-height: 1.8;">
+                        <li>Minimal Rank: Mythic Honor (50 Bintang)</li>
+                        <li>Win Rate All Season Minimal 60%</li>
+                        <li>Aktif minimal 3 hari dalam seminggu</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-ranking" class="page-section">
+            <div class="hero">
+                <p class="subtitle">HALL OF FAME</p>
+                <h1 class="hero-title">GLOBAL <span>RANKING.</span></h1>
+            </div>
+            <div class="glass-card" style="margin-top: 20px; overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 500px;">
+                    <tr style="border-bottom: 2px solid var(--primary-red);">
+                        <th style="padding: 15px;">Rank</th>
+                        <th>IGN (Nickname)</th>
+                        <th>Role Favorit</th>
+                        <th>Win Rate</th>
+                        <th>Poin Komunitas</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #333;">
+                        <td style="padding: 15px; color: var(--gold); font-weight: bold; font-size: 20px;">#1</td>
+                        <td><strong>YTEAM Rekt</strong></td>
+                        <td>Roamer</td>
+                        <td style="color: #4CAF50;">78.5%</td>
+                        <td>15,420</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #333;">
+                        <td style="padding: 15px; font-weight: bold; font-size: 18px;">#2</td>
+                        <td><strong>YTEAM Kairi.Fan</strong></td>
+                        <td>Jungler</td>
+                        <td style="color: #4CAF50;">75.2%</td>
+                        <td>14,100</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 15px; font-weight: bold;">#3</td>
+                        <td><strong>MageBuset</strong></td>
+                        <td>Midlaner</td>
+                        <td style="color: #4CAF50;">71.0%</td>
+                        <td>12,850</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="page-berita" class="page-section">
+            <div class="hero">
+                <p class="subtitle">UPDATE TERBARU</p>
+                <h1 class="hero-title">PORTAL <span>BERITA.</span></h1>
+            </div>
+            <div class="dashboard-grid">
+                <div class="glass-card interactive-card">
+                    <div style="height: 120px; background: #222; border-radius: 8px; margin-bottom: 15px; display:flex; align-items:center; justify-content:center; font-size:30px;">❄️</div>
+                    <h4>Patch Note 1.8.44: Revamp Aurora!</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-top: 10px;">Kembalinya sang ratu es ke Land of Dawn dengan skill yang dibekukan...</p>
+                </div>
+                <div class="glass-card interactive-card">
+                    <div style="height: 120px; background: #222; border-radius: 8px; margin-bottom: 15px; display:flex; align-items:center; justify-content:center; font-size:30px;">📝</div>
+                    <h4>Roster Lock MPL ID Season 14</h4>
+                    <p class="text-muted" style="font-size: 12px; margin-top: 10px;">Daftar lengkap pemain yang akan bertanding di season penentuan ini.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-guide" class="page-section">
+            <div class="hero">
+                <p class="subtitle">TIPS & TRIK</p>
+                <h1 class="hero-title">HERO <span>GUIDE.</span></h1>
+            </div>
+            <div class="dashboard-grid">
+                <div class="glass-card">
+                    <h3 style="color: var(--gold);">Yu Zhong - Exp Lane</h3>
+                    <p class="text-muted" style="margin-top: 10px;">Fokus potong minion dan langsung rotasi ke turtle. Gunakan emblem Fighter (Festival of Blood).</p>
+                    <button class="btn-secondary interactive" style="margin-top: 15px; font-size: 11px;">BACA FULL GUIDE</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-store" class="page-section">
+            <div class="hero">
+                <p class="subtitle">OFFICIAL MERCHANDISE</p>
+                <h1 class="hero-title">YTEAM <span>STORE.</span></h1>
+            </div>
+            <div class="dashboard-grid">
+                <div class="glass-card">
+                    <div style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 15px; display:flex; align-items:center; justify-content:center; font-size: 40px;">👕</div>
+                    <h4 style="margin-bottom: 5px;">Jersey Resmi YTEAM 2024</h4>
+                    <p class="prize" style="color: var(--gold); font-size: 20px; font-weight: 800; margin-bottom: 15px;">Rp 250.000</p>
+                    <button class="btn-primary interactive" style="width: 100%;">BELI SEKARANG</button>
+                </div>
+                <div class="glass-card">
+                    <div style="height: 150px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 15px; display:flex; align-items:center; justify-content:center; font-size: 40px;">🧥</div>
+                    <h4 style="margin-bottom: 5px;">Jaket Hoodie YTEAM</h4>
+                    <p class="prize" style="color: var(--gold); font-size: 20px; font-weight: 800; margin-bottom: 15px;">Rp 350.000</p>
+                    <button class="btn-primary interactive" style="width: 100%;">BELI SEKARANG</button>
                 </div>
             </div>
         </section>
