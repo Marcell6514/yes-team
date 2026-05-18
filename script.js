@@ -1,88 +1,87 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- 1. Logika Kursor Interaktif ---
+    // 1. Logika Kursor (Hanya aktif jika bukan di HP)
     const cursor = document.getElementById('custom-cursor');
-    const interactives = document.querySelectorAll('.interactive');
+    const isMobile = window.innerWidth <= 900;
 
-    // Kursor mengikuti pergerakan mouse
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-    });
+    if (!isMobile && cursor) {
+        document.body.style.cursor = "none";
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
 
-    // Menambah efek besar saat kursor di atas elemen yang bisa diklik
-    interactives.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-    });
+        // Efek Hover pada elemen interaktif
+        document.querySelectorAll('.interactive, a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+    }
 
-
-    // --- 2. Logika Navigasi (Ganti Halaman Tanpa Reload) ---
-    const navItems = document.querySelectorAll('.sidebar .nav-item');
+    // 2. Navigasi Ganti Halaman Tanpa Reload
+    const navItems = document.querySelectorAll('.nav-item, .topbar-nav a');
     const pages = document.querySelectorAll('.page-section');
 
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah browser scroll ke atas
-
-            // Ambil ID target dari atribut data-target
+            e.preventDefault();
             const targetId = item.getAttribute('data-target');
             if (!targetId) return;
 
-            // Hapus class active dari semua menu dan halaman
-            navItems.forEach(nav => nav.classList.remove('active'));
-            pages.forEach(page => page.classList.remove('active'));
+            // Update UI Menu Aktif (Sinkronkan sidebar dan topbar)
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+            document.querySelectorAll('.topbar-nav a').forEach(nav => nav.classList.remove('active'));
+            
+            // Tandai aktif pada menu yang memiliki data-target yang sama
+            document.querySelectorAll(`[data-target="${targetId}"]`).forEach(nav => nav.classList.add('active'));
 
-            // Tambahkan class active ke menu yang diklik dan halaman yang dituju
-            item.classList.add('active');
-            document.getElementById(targetId).classList.add('active');
+            // Ganti Halaman
+            pages.forEach(page => page.classList.remove('active'));
+            const targetPage = document.getElementById(targetId);
+            if(targetPage) targetPage.classList.add('active');
+
+            // Jika di HP, otomatis tutup sidebar setelah klik menu
+            const sidebar = document.getElementById('sidebar');
+            if(window.innerWidth <= 900 && sidebar) {
+                sidebar.classList.remove('active');
+            }
         });
     });
 
+    // 3. Toggle Sidebar untuk HP (Hamburger Menu)
+    const toggleBtn = document.getElementById('mobile-toggle');
+    const sidebar = document.getElementById('sidebar');
 
-    // --- 3. Konfigurasi Partikel (Membutuhkan koneksi internet untuk tsParticles) ---
+    if (toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+    }
+
+    // 4. Konfigurasi Partikel Background (tsParticles)
     tsParticles.load("tsparticles", {
         fpsLimit: 60,
         particles: {
-            number: {
-                value: 80, // Jumlah partikel
-                density: { enable: true, value_area: 800 }
-            },
-            color: { value: ["#fbc02d", "#d32f2f", "#ffffff"] }, // Warna: Emas, Merah, Putih
+            number: { value: window.innerWidth < 900 ? 30 : 70, density: { enable: true, value_area: 800 } },
+            color: { value: ["#fbc02d", "#d32f2f"] },
             shape: { type: "circle" },
-            opacity: {
-                value: 0.6,
-                random: true,
-                anim: { enable: true, speed: 1, opacity_min: 0.1, sync: false }
-            },
-            size: {
-                value: 3,
-                random: true,
-                anim: { enable: true, speed: 2, size_min: 0.1, sync: false }
-            },
-            move: {
-                enable: true,
-                speed: 1.5,
-                direction: "none",
-                random: true,
-                straight: false,
-                outModes: { default: "out" },
-                attract: { enable: false, rotateX: 600, rotateY: 1200 }
-            }
+            opacity: { value: 0.5, random: true },
+            size: { value: 3, random: true },
+            move: { enable: true, speed: 1.5, direction: "none", random: true, outModes: "out" }
         },
         interactivity: {
             detectsOn: "window",
             events: {
-                onHover: { enable: true, mode: "grab" }, // Efek garis saat dihover
-                onClick: { enable: true, mode: "push" }, // Tambah partikel saat diklik
+                onHover: { enable: !isMobile, mode: "grab" },
+                onClick: { enable: true, mode: "push" },
                 resize: true
             },
             modes: {
-                grab: { distance: 140, line_linked: { opacity: 0.5 } },
-                push: { particles_nb: 4 }
+                grab: { distance: 150, line_linked: { opacity: 0.5 } },
+                push: { particles_nb: 3 }
             }
         },
         retina_detect: true
     });
-
 });
