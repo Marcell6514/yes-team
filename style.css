@@ -1,0 +1,195 @@
+/* --- Variables & Reset --- */
+:root {
+    --bg-dark: #0a0a0c;
+    --sidebar-bg: #121215;
+    --card-bg: rgba(20, 20, 25, 0.6);
+    --primary-red: #d32f2f;
+    --primary-red-hover: #b71c1c;
+    --text-main: #ffffff;
+    --text-muted: #888890;
+    --gold: #fbc02d;
+    --border-color: rgba(255, 255, 255, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    cursor: none; /* Menyembunyikan kursor default untuk kustomisasi */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- Kursor Interaktif --- */
+.custom-cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 24px; height: 24px;
+    border: 2px solid var(--primary-red);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    mix-blend-mode: difference;
+}
+.custom-cursor.hovering {
+    width: 50px; height: 50px;
+    background-color: rgba(211, 47, 47, 0.3);
+    border-color: transparent;
+}
+
+/* --- Partikel Background --- */
+#tsparticles {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    border-right: 1px solid var(--border-color);
+    padding-top: 30px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+.logo span { color: var(--primary-red); }
+
+.nav-item {
+    padding: 16px 30px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+.nav-item:hover, .nav-item.active {
+    background: linear-gradient(90deg, rgba(211,47,47,0.15) 0%, transparent 100%);
+    color: var(--primary-red);
+    border-left-color: var(--primary-red);
+}
+
+/* --- Main Content & Topbar --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    position: relative;
+    background: radial-gradient(circle at top right, rgba(211,47,47,0.1), transparent 40%);
+}
+
+.topbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+}
+
+.topbar-nav a {
+    color: var(--text-muted);
+    margin-right: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.3s;
+}
+.topbar-nav a:hover, .topbar-nav a.active { color: var(--primary-red); }
+
+.auth-buttons button {
+    padding: 10px 24px;
+    margin-left: 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.3s;
+}
+.btn-login { background: transparent; color: var(--text-main); border: 1px solid var(--text-muted); }
+.btn-login:hover { border-color: var(--text-main); }
+.btn-register { background: var(--primary-red); color: white; }
+.btn-register:hover { background: var(--primary-red-hover); box-shadow: 0 0 15px rgba(211,47,47,0.5); }
+
+/* --- Halaman / Section --- */
+.page-section {
+    display: none;
+    padding: 50px;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    animation: fadeIn 0.5s ease forwards;
+}
+.page-section.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Typography & Buttons --- */
+.subtitle { color: var(--primary-red); font-weight: 800; font-size: 14px; margin-bottom: 15px; letter-spacing: 1px; }
+.hero-title { font-size: 72px; font-weight: 800; line-height: 1.05; margin-bottom: 25px; text-transform: uppercase; }
+.hero-title span { color: var(--gold); text-shadow: 0 0 20px rgba(251,192,45,0.3); }
+.hero-desc { max-width: 450px; color: var(--text-muted); line-height: 1.7; margin-bottom: 30px; font-size: 15px; }
+
+.btn-primary, .btn-secondary {
+    padding: 15px 35px; border: none; border-radius: 4px; font-weight: 600; font-size: 14px; margin-right: 15px; transition: 0.3s;
+}
+.btn-primary { background: var(--primary-red); color: white; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+.btn-primary:hover { background: var(--primary-red-hover); transform: scale(1.05); }
+.btn-secondary { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+.btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+/* --- Complex Layout: Dashboard Grid & Glassmorphism --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 60px;
+}
+
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    backdrop-filter: blur(15px); /* Efek kaca transparan */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+.glass-card:hover { transform: translateY(-5px); border-color: rgba(211,47,47,0.3); }
+
+.card-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color); padding-bottom: 10px;
+}
+.card-header h3 { font-size: 14px; font-weight: 600; letter-spacing: 1px; }
+.card-header a { font-size: 12px; color: var(--primary-red); text-decoration: none; font-weight: 600; }
+
+.tournament-card { display: flex; align-items: center; gap: 20px; }
+.trophy-placeholder { font-size: 50px; background: rgba(251,192,45,0.1); padding: 15px; border-radius: 50%; }
+.tourney-info h4 { font-size: 16px; margin-bottom: 5px; }
+.tourney-info .prize { color: var(--gold); font-size: 20px; font-weight: 800; margin-bottom: 5px; }
+.tourney-info .date { font-size: 12px; color: var(--text-muted); }

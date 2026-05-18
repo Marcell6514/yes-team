@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YTEAM Community</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.0.6/tsparticles.slim.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="tsparticles"></div>
+
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <nav class="sidebar">
+        <div class="logo"><span>Y</span>TEAM</div>
+        <div class="menu-group">
+            <a href="#" class="nav-item active interactive" data-target="page-beranda">Beranda</a>
+            <a href="#" class="nav-item interactive" data-target="page-mpl">MPL Indonesia</a>
+            <a href="#" class="nav-item interactive">Tentang Kami</a>
+            <a href="#" class="nav-item interactive">Turnamen</a>
+            <a href="#" class="nav-item interactive">Komunitas</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-nav">
+                <a href="#" class="active interactive">BERANDA</a>
+                <a href="#" class="interactive">TENTANG KAMI</a>
+                <a href="#" class="interactive">TURNAMEN</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn-login interactive">MASUK</button>
+                <button class="btn-register interactive">DAFTAR</button>
+            </div>
+        </header>
+
+        <section id="page-beranda" class="page-section active">
+            <div class="hero">
+                <h1 class="hero-title">BERSATU.<br>BERLATIH.<br><span>BERPRESTASI.</span></h1>
+                <p class="hero-desc">Komunitas MLBB terbesar di Indonesia untuk meningkatkan nilai kompetitif dan solidaritas antar player.</p>
+                <button class="btn-primary interactive">GABUNG KOMUNITAS</button>
+                <button class="btn-secondary interactive">LIHAT TURNAMEN</button>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>TURNAMEN TERDEKAT</h3>
+                        <a href="#" class="interactive">LIHAT SEMUA</a>
+                    </div>
+                    <div class="card-body tournament-card">
+                        <div class="trophy-placeholder">🏆</div>
+                        <div class="tourney-info">
+                            <h4>YTEAM CHAMPIONSHIP SEASON 3</h4>
+                            <p class="prize">Rp 25.000.000</p>
+                            <span class="date">20 - 27 JULI 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>BERITA TERBARU</h3>
+                        <a href="#" class="interactive">LIHAT SEMUA</a>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Loading berita...</p>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>GUILD UNGGULAN</h3>
+                        <a href="#" class="interactive">LIHAT SEMUA</a>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Loading guild...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-mpl" class="page-section">
+            <div class="hero">
+                <p class="subtitle">👑 TUJUAN KAMI</p>
+                <h1 class="hero-title">DARI KOMUNITAS,<br>MENJADI<br><span>JUARA DUNIA.</span></h1>
+                <p class="hero-desc">YTeam Community adalah tempat para player MLBB berkumpul, berkembang, dan berkompetisi untuk menciptakan tim esports yang mampu menaklukkan dunia.</p>
+            </div>
+
+            <div class="dashboard-grid" style="grid-template-columns: 2fr 1fr;">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>LEADERBOARD KOMUNITAS</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Tabel klasemen akan dirender menggunakan JavaScript dari API.</p>
+                    </div>
+                </div>
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h3>JALUR MENUJU PUNCAK</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Bagan turnamen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
